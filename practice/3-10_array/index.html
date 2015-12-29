@@ -16,7 +16,9 @@
 </header>
 <div class="main-wrapper">
 <section>
-
+  <h1>やることリスト</h1>
+	<ul id="list">
+	</ul>
 </section>
 </div><!-- /.main-wrapper -->
 <footer>JavaScript Samples</footer>
@@ -24,7 +26,9 @@
 var todo = ['デザインカップ作成', 'データ整理', '勉強会申し込み', '牛乳買う'];
 todo.push('歯医者に行く');
 for (var i = 0; i < todo.length; i++) {
-  console.log(todo[i]);
+	var li = document.createElement('li');
+	li.textContent = todo[i];
+	document.getElementById('list').appendChild(li);
 }
 </script>
 </body>
