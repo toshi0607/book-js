@@ -26,7 +26,10 @@
 <footer>JavaScript Samples</footer>
 <script>
 document.getElementById('form').onsubmit = function() {
-	console.log('クリックされました');
+	//console.log('クリックされました');
+	var search = document.getElementById('form').word.value;
+	document.getElementById('output').textContent ='『' + search + '』の検索中．．．';
+	return false;
 };
 </script>
 </body>
