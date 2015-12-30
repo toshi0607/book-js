@@ -6,6 +6,15 @@
 <meta http-equiv="x-ua-compatible" content="IE=edge">
 <title>template</title>
 <link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+<style>
+table {
+	border-collapse: collapse;
+}
+td {
+	padding: 4px 8px;
+	border: 1px solid #23628f;
+}
+</style>
 </head>
 <body>
 <header>
@@ -28,16 +37,20 @@
 <footer>JavaScript Samples</footer>
 <script>
 var jsbook = {title: 'JavaScript入門', price: 2500, stock: 3};
+
+document.getElementById('title').textContent = jsbook.title;
+document.getElementById('price').textContent = jsbook.price + '円';
+document.getElementById('stock').textContent = jsbook.stock;
 /*
 console.log(jsbook);
 console.log(jsbook.title);
 console.log(jsbook['price']);
 jsbook.stock = 10;
 console.log(jsbook.stock);
-*/
 for(var p in jsbook) {
 	console.log(p + '=' + jsbook[p]);
 }
+*/
 </script>
 </body>
 </html>
