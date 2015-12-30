@@ -16,17 +16,28 @@
 </header>
 <div class="main-wrapper">
 <section>
-
+  <table>
+		<tr>
+		  <td id="title"></td>
+		  <td id="price"></td>
+		  <td id="stock"></td>
+	  </tr>
+	</table>
 </section>
 </div><!-- /.main-wrapper -->
 <footer>JavaScript Samples</footer>
 <script>
 var jsbook = {title: 'JavaScript入門', price: 2500, stock: 3};
+/*
 console.log(jsbook);
 console.log(jsbook.title);
 console.log(jsbook['price']);
 jsbook.stock = 10;
 console.log(jsbook.stock);
+*/
+for(var p in jsbook) {
+	console.log(p + '=' + jsbook[p]);
+}
 </script>
 </body>
 </html>
