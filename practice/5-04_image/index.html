@@ -53,7 +53,7 @@ var thumbs = document.querySelectorAll('.thumb');
 console.log(thumbs);
 for(var i = 0; i < thumbs.length; i++) {
 	thumbs[i].onclick = function() {
-		console.log(this.dataset.image);
+		document.getElementById('bigimg').src = this.dataset.image;
 	}
 }
 </script>
