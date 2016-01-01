@@ -40,9 +40,17 @@ goal.setMinutes(59);
 goal.setSeconds(59);
 
 console.log(countdown(goal));
-var counter = countdown(goal);
-var time = counter[1] + '時間' + counter[2] + '分' + counter[3] + '秒';
-document.getElementById('timer').textContent = time;
+var recalc = function() {
+  var counter = countdown(goal);
+  var time = counter[1] + '時間' + counter[2] + '分' + counter[3] + '秒';
+  document.getElementById('timer').textContent = time;
+	refresh();
+}
+
+var refresh = function() {
+	setTimeout(recalc, 1000);
+}
+recalc();
 </script>
 </body>
 </html>
