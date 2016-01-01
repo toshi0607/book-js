@@ -35,6 +35,13 @@ img {
 	height: 40px;
 	background: url(images/next.png) no-repeat;
 }
+#page {
+	display: inline-block;
+	float: left;
+	margin-top: 8px;
+	height: 32px;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -53,6 +60,7 @@ img {
 		<div class="toolbar">
 		  <div class="nav">
 		    <div id="prev"></div>
+				<span id="page"></span>
 		    <div id="next"></div>
 	    </div>
 	  </div>
@@ -63,12 +71,26 @@ img {
 <script>
 var images = ['images/image1.jpg', 'images/image2.jpg', 'images/image3.jpg', 'images/image4.jpg', 'images/image5.jpg'];
 var current = 0;
+var pageNum = function() {
+	document.getElementById('page').textContent = (current + 1) + '/' + images.length;
+}
 var changeImage = function(num) {
 	if(current + num >= 0 && current + num < images.length) {
 		current += num;
 		document.getElementById('main_image').src = images[current];
+		pageNum();
 	}
 };
+var preloadImage = function(path){
+	var imgTag = document.createElement('img');
+	imgTag.src = path;
+}
+
+for(var i = 0; i < images.length; i++) {
+	preloadImage(images[i]);
+}
+
+pageNum();
 
 document.getElementById('prev').onclick = function() {
 	changeImage(-1);
