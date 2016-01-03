@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="IE=edge">
-<title>template</title>
+<title>6-03_ajax</title>
 <link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
 <style>
 .list {
@@ -45,8 +45,8 @@
 <body>
 <header>
 <div class="header-contents">
-<h1>タイトル</h1>
-<h2>サブタイトル</h2>
+<h1>空き席状況をチェック</h1>
+<h2>Ajaxとデータの活用</h2>
 </div><!-- /.header-contents -->
 </header>
 <div class="main-wrapper">
@@ -54,15 +54,15 @@
 	<ul class="list">
 		<li class="seminar" id="js">
 			<h2>JavaScript勉強会</h2>
-			<p class="check">空き状況を確認</p>
+			<p class="check">空き席状況を確認</p>
 		</li>
 		<li class="seminar" id="security">
 			<h2>セキュリティ対策講座</h2>
-			<p class="check">空き状況を確認</p>
+			<p class="check">空き席状況を確認</p>
 		</li>
 		<li class="seminar" id="uiux">
-			<h2>UXハッカソン</h2>
-			<p class="check">空き状況を確認</p>
+			<h2>UI/UXハッカソン</h2>
+			<p class="check">空き席状況を確認</p>
 		</li>
 	</ul>
 </section>
@@ -73,27 +73,27 @@
 $(document).ready(function(){
 	//ファイルの読み込み
 	$.ajax({url: 'data.json', dataType: 'json'})
-	  .done(function(data){
-			$(data).each(function() {
-				if(this.crowded === 'yes') {
-					var idName = '#' + this.id;
-					$(idName).find('.check').addClass('crowded');
-				}
-			});
-		})
-		.fail(function() {
-			window.alert('読み込みエラー');
-		});
-
-    //クリックされたら空き状況を表示
-		$('.check').on('click', function(){
-			if($(this).hasClass('crowded')) {
-				$(this).text('残席わずか').addClass('red');
-			} else {
-				$(this).text('お席あります').addClass('green');
+	.done(function(data){
+		$(data).each(function(){
+			if(this.crowded === 'yes') {
+				var idName = '#' + this.id;
+				$(idName).find('.check').addClass('crowded');
 			}
 		});
-  });
+	})
+	.fail(function(){
+		window.alert('読み込みエラー');
+	});
+
+	//クリックされたら空き席状況を表示
+	$('.check').on('click', function(){
+		if($(this).hasClass('crowded')) {
+			$(this).text('残席わずか').addClass('red');
+		} else {
+			$(this).text('お席あります').addClass('green');
+		}
+	});
+});
 </script>
 </body>
 </html>
