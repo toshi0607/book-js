@@ -36,10 +36,15 @@ $(document).ready(function(){
 		$(data).find('channel item').each(function(){
 			var itemTitle = $(this).find('title').text();
 			var permaLink = $(this).find('link').text();
+
+			var pubText = $(this).find('pubDate').text();
+			var pubDate = new Date(pubText);
+			var dateString = '(' + pubDate.getFullYear() + '/' + (pubDate.getMonth() + 1) + '/' + pubDate.getDate() + ')';;
 			$('#latest').append(
 				$('<li></li>').append(
 				  $('<a></a>').attr('href', permaLink).text(itemTitle)
 				)
+				.append(dateString)
 			)
 		});
 	})
